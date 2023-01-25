@@ -1,0 +1,48 @@
+---
+title: "Exercises"
+author: "Nicolas Kolling Ribas"
+date: "2023-01-25"
+output: pdf_document
+---
+
+## 6.1 The CPU time and disk I/O’s of seven programs are shown in Table 6.7. Determine the equation for principal factors.
+
+Load the dataset
+```{r}
+dataset <- read.csv("table-6.7.csv")
+print(dataset)
+```
+
+
+Run principal-component analysis algorithm
+```{r}
+pca_result <- prcomp(dataset[3:4], scale = TRUE)
+print(pca_result)
+```
+
+Plot the values of principal factors
+```{r, message = FALSE}
+library(ggfortify)
+autoplot(pca_result, data = dataset, colour = 'Function', size = 3)
+```
+
+## 6.2 Using a spanning-tree algorithm for cluster analysis, prepare a dendrogram for the data shown in Table 6.7. Interpret the result of your analysis.
+
+Make program name the row name, remove "Function" collumn
+```{r}
+library(tibble)
+dataset <- column_to_rownames(dataset, var = "Program.Name")[,-1]
+print(dataset)
+```
+
+Compute the intercluster distance matrix and do the agglomerative hierarchical clustering
+```{r}
+dist <- dist(scale(dataset), method = "euclidean")
+clust <- hclust(dist, method = "ward.D2")
+```
+
+Plot the dendrogram
+```{r}
+dend <- as.dendrogram(clust)
+plot(dend)
+```

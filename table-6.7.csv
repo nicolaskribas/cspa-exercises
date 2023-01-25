@@ -1,0 +1,8 @@
+Program Name,Function,CPU Time,I/O's
+TKB,Linker,14,2735
+MAC,Assembler,13,253
+COBOL,Compiler,8,27
+BASIC,Compiler,6,27
+Pascal,Compiler,6, 12
+EDT,Text editor,4,91
+SOS,Text editor,1,33
