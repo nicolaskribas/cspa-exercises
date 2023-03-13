@@ -1,7 +1,6 @@
 ---
-title: "Exercises"
+title: "Chapter 6: Workload Characterization Techniques"
 author: "Nicolas Kolling Ribas"
-date: "2023-01-25"
 output: pdf_document
 ---
 
